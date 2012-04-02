@@ -47,12 +47,12 @@
         if (this.isShown) return
 
         $('div.modal.in:visible').each(function() {
-        	var $modal = $(this)
-        	  , modalOpenIndex = $modal.data('modal-open-index') || 0
-        	
-        	if (modalOpenIndex <= openModalCount) {
-        	  $modal.css('zIndex', backdropZIndex - 50 + modalOpenIndex) //move the modal beneath the modal backdrop
-        	}
+            var $modal = $(this)
+              , modalOpenIndex = $modal.data('modal-open-index') || 0
+            
+            if (modalOpenIndex <= openModalCount) {
+              $modal.css('zIndex', backdropZIndex - 50 + modalOpenIndex) //move the modal beneath the modal backdrop
+            }
         })
         
         openModalCount++;
@@ -95,12 +95,12 @@
         this.isShown = false
         
         $('div.modal.in:visible').each(function() {
-        	var $modal = $(this)
-        	  , modalOpenIndex = $modal.data('modal-open-index') || 0
-        	
-        	if (modalOpenIndex == thisModalOpenIndex - 1) {
-        	  $modal.css('zIndex', '')
-        	}
+            var $modal = $(this)
+              , modalOpenIndex = $modal.data('modal-open-index') || 0
+            
+            if (modalOpenIndex == thisModalOpenIndex - 1) {
+              $modal.css('zIndex', '')
+            }
         })
         
         openModalCount--;
@@ -112,6 +112,7 @@
         this.$element
           .trigger('hide')
           .removeClass('in')
+          .css('zIndex', '')
           .data('modal-open-index', '')
 
         $.support.transition && this.$element.hasClass('fade') ?
